@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "843199367390",
+    "firebase_url": "https://infosysfbauth.firebaseio.com",
+    "project_id": "infosysfbauth",
+    "storage_bucket": "infosysfbauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843199367390:android:6bd514bf7b89acc79eda4f",
+        "android_client_info": {
+          "package_name": "com.thevarungupta.firebaseauthdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843199367390-o7jtmg8q6de8olnk5u37op4tqksiesm9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thevarungupta.firebaseauthdemo",
+            "certificate_hash": "f2ce0d9d4c705d04302bd11ae488839d3b9f5a13"
+          }
+        },
+        {
+          "client_id": "843199367390-v7g69a8dla57psvag1ovvttlhkrnbul5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtcAj_NtlERuvyBzeVo83RjSJ3ogMRxso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843199367390-v7g69a8dla57psvag1ovvttlhkrnbul5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
