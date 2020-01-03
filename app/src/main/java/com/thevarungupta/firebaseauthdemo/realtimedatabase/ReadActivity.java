@@ -27,6 +27,8 @@ public class ReadActivity extends AppCompatActivity {
 
     ArrayList<User> users = new ArrayList<>();
 
+    ArrayList<String> keys = new ArrayList<>();
+
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
@@ -44,7 +46,7 @@ public class ReadActivity extends AppCompatActivity {
     private void init() {
         recyclerView = findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(this);
-        adapterUser = new AdapterUser(this, users);
+        adapterUser = new AdapterUser(this, keys);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapterUser);
@@ -57,18 +59,16 @@ public class ReadActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                List<String> keys = new ArrayList<>();
                 for (DataSnapshot keyNode : dataSnapshot.getChildren()) {
                     // adding all the keys in keys arrays
                     // once we read all the keys we can start reading data using keys
-                    //keys.add(keyNode.getKey());
+                    keys.add(keyNode.getKey());
 
                     // read the data using keys and save in users array
                     User user = keyNode.getValue(User.class);
                     users.add(user);
                 }
-                adapterUser.setData(users);
+                adapterUser.setData(keys);
 
             }
 

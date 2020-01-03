@@ -1,6 +1,7 @@
 package com.thevarungupta.firebaseauthdemo.realtimedatabase;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,11 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder>{
 
     Context mContext;
     ArrayList<User> mList = new ArrayList<>();
+    ArrayList<String> keys = new ArrayList<>();
 
-    public AdapterUser(Context context, ArrayList<User> list){
+    public AdapterUser(Context context, ArrayList<String> keys){
         this.mContext = context;
-        this.mList = list;
+        this.keys = keys;
     }
 
     @NonNull
@@ -33,21 +35,22 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User user = mList.get(position);
-        holder.textViewName.setText(user.getName()+","+user.getEmail());
+        //User user = mList.get(position);
+        //holder.textViewName.setText(user.getName()+","+user.getEmail());
+        holder.textViewName.setText(keys.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return keys.size();
     }
 
-    public void setData(ArrayList<User> list){
-        mList = list;
+    public void setData(ArrayList<String> list){
+        keys = list;
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textViewName;
 
@@ -55,7 +58,16 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder>{
             super(itemView);
 
             textViewName = itemView.findViewById(R.id.text_view_name);
+            itemView.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            String id = keys.get(getAdapterPosition());
+            Intent intent = new Intent(mContext, UserDetailActivity.class);
+            intent.putExtra("DATA", id);
+            mContext.startActivity(intent);
         }
     }
 
